@@ -7,7 +7,7 @@ import { adaptadorFecha } from "../utils/adatptadorFecha.js";
 export const findPlan= async(req, res)=>{
     console.log("****************** Acceso ruta findPlan ******************")
     const { origen, personas, destino, fecha_ida, fecha_vuelta } = req.body;
-    //const origen="Madrid", personas="4", destino="Roma", fecha_ida="2024-05-17", fecha_vuelta="2024-05-24"
+    // const origen="Madrid", personas="4", destino="Nueva York", fecha_ida="2024-07-17", fecha_vuelta="2024-07-24"
     // console.log(origen, personas, destino, fecha_ida, fecha_vuelta)
     
     const ida_formateada= adaptadorFecha(fecha_ida);
@@ -15,7 +15,6 @@ export const findPlan= async(req, res)=>{
     const originCity= await searchId(origen);
     const destinationCity= await searchId(destino);
     const cityIdBooking = await searchIdBooking(destino)
-    console.log(cityIdBooking)
 
 
 

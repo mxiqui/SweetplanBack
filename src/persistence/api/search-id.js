@@ -27,28 +27,50 @@ export const searchId=async (city)=>{
     //         return null;
     //     }
 
-    const url = `https://sky-scanner3.p.rapidapi.com/flights/auto-complete?query=${city}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': process.env.API_SKYSCANNER,
-                'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com'
-            }
-            };
+    // const url = `https://sky-scanner3.p.rapidapi.com/flights/auto-complete?query=${city}`;
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //             'X-RapidAPI-Key': process.env.API_SKYSCANNER,
+    //             'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com'
+    //         }
+    //         };
 
-        try {
+    //     try {
 
-            const response = await fetch(url, options);
+    //         const response = await fetch(url, options);
+    //         const result = await response.json();
+    //         if(result.data.lenght>0 &&result.data[0].presentation.skyId==undefined){
+    //             return null;
+    //         }else{
+    //             console.log("************ Id obtenido: "+city+" -->"+result.data[0].presentation.skyId+" ************")
+    //             return result.data[0].presentation.skyId;
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+
+    const url = `https://skyscanner80.p.rapidapi.com/api/v1/flights/auto-complete?query=${city}&market=es&locale=es-ES`;
+const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': '3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97',
+		'x-rapidapi-host': 'skyscanner80.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
             const result = await response.json();
-            if(result.data.lenght>0 &&result.data[0].presentation.skyId==undefined){
+            if(result.data.lenght>0 &&result.data[0].id==undefined){
                 return null;
             }else{
-                console.log("************ Id obtenido: "+city+" -->"+result.data[0].presentation.skyId+" ************")
-                return result.data[0].presentation.skyId;
+                console.log("************ Id obtenido: "+city+" -->"+result.data[0].id+" ************")
+                return result.data[0].id;
             }
-        } catch (error) {
-            console.error(error);
-        }
+} catch (error) {
+	console.error(error);
+}
     
 }
 
