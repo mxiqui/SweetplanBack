@@ -55,3 +55,9 @@ export const searchReviewsAirbnb = async(req, res) =>{
     }
 
 }
+
+
+export const prueba = async(req, res) => {
+    res.send("Holaa")
+    
+}
