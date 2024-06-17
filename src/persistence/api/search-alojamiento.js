@@ -73,6 +73,7 @@ export const searchAlojamientoBooking=async(divisa, entrada, destino, personas, 
 
 
 export const searchImageBooking= async(id)=>{
+    console.log("HHhh")
 
     const url = `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${id}&locale=en-gb`;
     const options = {
@@ -85,14 +86,17 @@ export const searchImageBooking= async(id)=>{
 
     try {
         const response = await fetch(url, options);
-        const result = await response.text();
+        const result = await response.json();
         var imagenes =[]
 
+
         result.forEach(element => {
-            if(imagenes.length>6){
-                imagenes.push(element.url_max)
+            if (imagenes.length < 5) {
+                imagenes.push(element.url_max);
             }
         });
+
+        console.log(imagenes.length)
         return imagenes
     } catch (error) {
         return imagenes

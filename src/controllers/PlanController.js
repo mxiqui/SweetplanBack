@@ -1,4 +1,4 @@
-import { searchAlojamientoBooking, searchAlojamientoAirbnb } from "../persistence/api/search-alojamiento.js";
+import { searchAlojamientoBooking, searchAlojamientoAirbnb, searchImageBooking } from "../persistence/api/search-alojamiento.js";
 import { searchFly } from "../persistence/api/search-fly.js";
 import { searchId, searchIdBooking } from "../persistence/api/search-id.js";
 import { adaptadorFecha } from "../utils/adatptadorFecha.js";
@@ -45,4 +45,16 @@ export const findPlan= async(req, res)=>{
 export const findPlanPrueba=async (req, res)=>{
     const { origen, personas, destino, fecha_ida, fecha_vuelta } = req.body;
     var resultadoVuelos= await searchFly(originCity, destinationCity, ida_formateada, vuelta_formateada, personas, 'EUR')
+}
+
+
+export const getImages = async(req, res)=>{
+
+    console.log("****************** Acceso ruta getImages ******************")
+
+    const {id } = req.body;
+    const imagenes= await searchImageBooking(id)
+    console.log(id)
+    res.send(imagenes)
+
 }
