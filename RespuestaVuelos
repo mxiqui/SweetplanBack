@@ -1,0 +1,1206 @@
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "token": "eyJhIjoiMSIsImMiOjAsImkiOjAsImNjIjoiZWNvbm9teSIsIm8iOiJNQUQiLCJkIjoiTE9ORCIsImQxIjoiMjAyNC0wNC0yMCJ9",
+    "context": {
+      "status": "incomplete",
+      "sessionId": "ClQIARJQCk4KJGQzNThmNTk3LTQ1NDAtNGQ1NS05MjFmLTM3NGQ1ZmE2MGRkZBACGiQ1YTFkODBiNi03ZWM2LTQzMDAtYjUxMi0xYzVjMDliNzY0Y2E=",
+      "totalResults": 10
+    },
+    "itineraries": [
+      {
+        "id": "13870-2404201500--32680-0-13542-2404201625",
+        "price": {
+          "raw": 227.9,
+          "formatted": "$228",
+          "pricingOptionId": "P1yZo3tLhsys"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201500--32680-0-13542-2404201625",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LGW",
+              "name": "London Gatwick",
+              "displayCode": "LGW",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T15:00:00",
+            "arrival": "2024-04-20T16:25:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32680,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/UX.png",
+                  "name": "Air Europa"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13542-2404201500-2404201625--32680",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LGW",
+                  "displayCode": "LGW",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Gatwick",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T15:00:00",
+                "arrival": "2024-04-20T16:25:00",
+                "durationInMinutes": 145,
+                "flightNumber": "1015",
+                "marketingCarrier": {
+                  "id": -32680,
+                  "name": "Air Europa",
+                  "alternateId": "UX",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32680,
+                  "name": "Air Europa",
+                  "alternateId": "UX",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "tags": [
+          "second_cheapest",
+          "second_shortest"
+        ],
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.999
+      },
+      {
+        "id": "13870-2404201105--31915-0-16574-2404201235",
+        "price": {
+          "raw": 179.93,
+          "formatted": "$180",
+          "pricingOptionId": "ylzfdiYrCHdW"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201105--31915-0-16574-2404201235",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "STN",
+              "name": "London Stansted",
+              "displayCode": "STN",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 150,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T11:05:00",
+            "arrival": "2024-04-20T12:35:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -31915,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/FR.png",
+                  "name": "Ryanair"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-16574-2404201105-2404201235--31915",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "STN",
+                  "displayCode": "STN",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Stansted",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T11:05:00",
+                "arrival": "2024-04-20T12:35:00",
+                "durationInMinutes": 150,
+                "flightNumber": "5993",
+                "marketingCarrier": {
+                  "id": -31915,
+                  "name": "Ryanair",
+                  "alternateId": "FR",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -31915,
+                  "name": "Ryanair",
+                  "alternateId": "FR",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "tags": [
+          "cheapest"
+        ],
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.986958
+      },
+      {
+        "id": "13870-2404201545--32480-0-13554-2404201715",
+        "price": {
+          "raw": 261.76,
+          "formatted": "$262",
+          "pricingOptionId": "2Kpm_p2WOe8p"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201545--32480-0-13554-2404201715",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 150,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T15:45:00",
+            "arrival": "2024-04-20T17:15:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32480,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+                  "name": "British Airways"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "not_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201545-2404201715--32480",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T15:45:00",
+                "arrival": "2024-04-20T17:15:00",
+                "durationInMinutes": 150,
+                "flightNumber": "7058",
+                "marketingCarrier": {
+                  "id": -32480,
+                  "name": "British Airways",
+                  "alternateId": "BA",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "eco": {
+          "ecoContenderDelta": 8.355892
+        },
+        "fareAttributes": {},
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.931413
+      },
+      {
+        "id": "13870-2404201650--32480-0-13554-2404201815",
+        "price": {
+          "raw": 261.76,
+          "formatted": "$262",
+          "pricingOptionId": "BIaXQQ936P_x"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201650--32480-0-13554-2404201815",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T16:50:00",
+            "arrival": "2024-04-20T18:15:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32480,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+                  "name": "British Airways"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "not_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201650-2404201815--32480",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T16:50:00",
+                "arrival": "2024-04-20T18:15:00",
+                "durationInMinutes": 145,
+                "flightNumber": "7050",
+                "marketingCarrier": {
+                  "id": -32480,
+                  "name": "British Airways",
+                  "alternateId": "BA",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.91912
+      },
+      {
+        "id": "13870-2404201455--32480-0-13554-2404201620",
+        "price": {
+          "raw": 271.34,
+          "formatted": "$272",
+          "pricingOptionId": "qn7Y0LAS5ycG"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201455--32480-0-13554-2404201620",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T14:55:00",
+            "arrival": "2024-04-20T16:20:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32480,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+                  "name": "British Airways"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "not_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201455-2404201620--32480",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T14:55:00",
+                "arrival": "2024-04-20T16:20:00",
+                "durationInMinutes": 145,
+                "flightNumber": "7060",
+                "marketingCarrier": {
+                  "id": -32480,
+                  "name": "British Airways",
+                  "alternateId": "BA",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.906827
+      },
+      {
+        "id": "13870-2404201755--32480-0-13554-2404201920",
+        "price": {
+          "raw": 261.76,
+          "formatted": "$262",
+          "pricingOptionId": "pU37W2CleEFc"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201755--32480-0-13554-2404201920",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T17:55:00",
+            "arrival": "2024-04-20T19:20:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32480,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+                  "name": "British Airways"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "not_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201755-2404201920--32480",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T17:55:00",
+                "arrival": "2024-04-20T19:20:00",
+                "durationInMinutes": 145,
+                "flightNumber": "7056",
+                "marketingCarrier": {
+                  "id": -32480,
+                  "name": "British Airways",
+                  "alternateId": "BA",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.894617
+      },
+      {
+        "id": "13870-2404201725--32480-0-13554-2404201845",
+        "price": {
+          "raw": 271.34,
+          "formatted": "$272",
+          "pricingOptionId": "9eI5d1ipTQy3"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201725--32480-0-13554-2404201845",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 140,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T17:25:00",
+            "arrival": "2024-04-20T18:45:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32480,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+                  "name": "British Airways"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "not_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201725-2404201845--32480",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T17:25:00",
+                "arrival": "2024-04-20T18:45:00",
+                "durationInMinutes": 140,
+                "flightNumber": "7072",
+                "marketingCarrier": {
+                  "id": -32480,
+                  "name": "British Airways",
+                  "alternateId": "BA",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "tags": [
+          "shortest"
+        ],
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.871601
+      },
+      {
+        "id": "13870-2404201545--32222-0-13554-2404201715",
+        "price": {
+          "raw": 254.3,
+          "formatted": "$255",
+          "pricingOptionId": "f2QxPIgVu5kz"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201545--32222-0-13554-2404201715",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 150,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T15:45:00",
+            "arrival": "2024-04-20T17:15:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201545-2404201715--32222",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T15:45:00",
+                "arrival": "2024-04-20T17:15:00",
+                "durationInMinutes": 150,
+                "flightNumber": "3166",
+                "marketingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "eco": {
+          "ecoContenderDelta": 8.355892
+        },
+        "fareAttributes": {},
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.867624
+      },
+      {
+        "id": "13870-2404201650--32222-0-13554-2404201815",
+        "price": {
+          "raw": 254.3,
+          "formatted": "$255",
+          "pricingOptionId": "_01DK1iyykUe"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201650--32222-0-13554-2404201815",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T16:50:00",
+            "arrival": "2024-04-20T18:15:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201650-2404201815--32222",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T16:50:00",
+                "arrival": "2024-04-20T18:15:00",
+                "durationInMinutes": 145,
+                "flightNumber": "3180",
+                "marketingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "tags": [
+          "third_cheapest",
+          "third_shortest"
+        ],
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.866733
+      },
+      {
+        "id": "13870-2404201755--32222-0-13554-2404201920",
+        "price": {
+          "raw": 254.3,
+          "formatted": "$255",
+          "pricingOptionId": "046P-Ya6EpCu"
+        },
+        "legs": [
+          {
+            "id": "13870-2404201755--32222-0-13554-2404201920",
+            "origin": {
+              "id": "MAD",
+              "name": "Madrid",
+              "displayCode": "MAD",
+              "city": "Madrid",
+              "country": "Spain",
+              "isHighlighted": false
+            },
+            "destination": {
+              "id": "LHR",
+              "name": "London Heathrow",
+              "displayCode": "LHR",
+              "city": "London",
+              "country": "United Kingdom",
+              "isHighlighted": false
+            },
+            "durationInMinutes": 145,
+            "stopCount": 0,
+            "isSmallestStops": false,
+            "departure": "2024-04-20T17:55:00",
+            "arrival": "2024-04-20T19:20:00",
+            "timeDeltaInDays": 0,
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32222,
+                  "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+                  "name": "Iberia"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "segments": [
+              {
+                "id": "13870-13554-2404201755-2404201920--32222",
+                "origin": {
+                  "flightPlaceId": "MAD",
+                  "displayCode": "MAD",
+                  "parent": {
+                    "flightPlaceId": "MADR",
+                    "displayCode": "MAD",
+                    "name": "Madrid",
+                    "type": "City"
+                  },
+                  "name": "Madrid",
+                  "type": "Airport",
+                  "country": "Spain"
+                },
+                "destination": {
+                  "flightPlaceId": "LHR",
+                  "displayCode": "LHR",
+                  "parent": {
+                    "flightPlaceId": "LOND",
+                    "displayCode": "LON",
+                    "name": "London",
+                    "type": "City"
+                  },
+                  "name": "London Heathrow",
+                  "type": "Airport",
+                  "country": "United Kingdom"
+                },
+                "departure": "2024-04-20T17:55:00",
+                "arrival": "2024-04-20T19:20:00",
+                "durationInMinutes": 145,
+                "flightNumber": "3164",
+                "marketingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                },
+                "operatingCarrier": {
+                  "id": -32222,
+                  "name": "Iberia",
+                  "alternateId": "IB",
+                  "allianceId": 0,
+                  "displayCode": ""
+                }
+              }
+            ]
+          }
+        ],
+        "isSelfTransfer": false,
+        "isProtectedSelfTransfer": false,
+        "farePolicy": {
+          "isChangeAllowed": false,
+          "isPartiallyChangeable": false,
+          "isCancellationAllowed": false,
+          "isPartiallyRefundable": false
+        },
+        "fareAttributes": {},
+        "tags": [
+          "third_cheapest",
+          "third_shortest"
+        ],
+        "isMashUp": false,
+        "hasFlexibleOptions": false,
+        "score": 0.84348
+      }
+    ],
+    "messages": [],
+    "filterStats": {
+      "duration": {
+        "min": 140,
+        "max": 150,
+        "multiCityMin": 140,
+        "multiCityMax": 150
+      },
+      "airports": [
+        {
+          "city": "London",
+          "airports": [
+            {
+              "id": "LGW",
+              "name": "London Gatwick"
+            },
+            {
+              "id": "LHR",
+              "name": "London Heathrow"
+            },
+            {
+              "id": "STN",
+              "name": "London Stansted"
+            }
+          ]
+        },
+        {
+          "city": "Madrid",
+          "airports": [
+            {
+              "id": "MAD",
+              "name": "Madrid"
+            }
+          ]
+        }
+      ],
+      "carriers": [
+        {
+          "id": -32680,
+          "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/UX.png",
+          "name": "Air Europa"
+        },
+        {
+          "id": -32480,
+          "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/BA.png",
+          "name": "British Airways"
+        },
+        {
+          "id": -32222,
+          "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/IB.png",
+          "name": "Iberia"
+        },
+        {
+          "id": -31915,
+          "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/FR.png",
+          "name": "Ryanair"
+        }
+      ],
+      "stopPrices": {
+        "direct": {
+          "isPresent": true,
+          "formattedPrice": "$180"
+        },
+        "one": {
+          "isPresent": false
+        },
+        "twoOrMore": {
+          "isPresent": false
+        }
+      }
+    },
+    "flightsSessionId": "d358f597-4540-4d55-921f-374d5fa60ddd",
+    "destinationImageUrl": "https://content.skyscnr.com/m/3719e8f4a5daf43d/original/Flights-Placeholder.jpg"
+  }
+}
