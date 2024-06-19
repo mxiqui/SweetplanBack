@@ -10,6 +10,12 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,
     logging: false, // Desactivar el registro de consultas SQL
+    pool: {
+        max: 10, // Número máximo de conexiones en el pool
+        min: 0,
+        acquire: 30000, // Tiempo máximo en ms que el pool intentará obtener una conexión antes de lanzar un error
+        idle: 10000 // Tiempo máximo en ms que una conexión puede estar inactiva antes de ser liberada
+    }
 });
 
 export default sequelize;
