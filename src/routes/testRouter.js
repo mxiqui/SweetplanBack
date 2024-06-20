@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-const router = Router();
+const routerPrueba = Router();
 
-router.get("/", async (req,res)=>{
+routerPrueba.get("/", async (req,res)=>{
+    res.send("Holaaa")
     console.log("Hola")
 })
 
-export default router
+export default routerPrueba

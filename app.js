@@ -9,6 +9,7 @@ import { routerReviews } from './src/routes/v1/ReviewsRoute.js';
 import { AlojamientoService } from './src/persistence/services/AlojamientoService.js';
 import { VueloService } from './src/persistence/services/VueloService.js';
 import { OfertaService } from './src/persistence/services/OfertaService.js';
+import routerPrueba from './src/routes/testRouter.js';
 
 
 
@@ -22,6 +23,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(router)
+app.use(routerPrueba)
 app.use(routerPlan)
 app.use(routerAlerts)
 app.use(routerReviews)
