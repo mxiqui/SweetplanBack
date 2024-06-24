@@ -6,10 +6,8 @@ import {router} from './src/routes/v1/OfferRoute.js'
 import { routerPlan } from './src/routes/v1/PlanRoute.js';
 import routerAlerts from './src/routes/v1/AlertsRoute.js';
 import { routerReviews } from './src/routes/v1/ReviewsRoute.js';
-import { AlojamientoService } from './src/persistence/services/AlojamientoService.js';
-import { VueloService } from './src/persistence/services/VueloService.js';
-import { OfertaService } from './src/persistence/services/OfertaService.js';
 import routerPrueba from './src/routes/testRouter.js';
+import { routerV2 } from './src/routes/v2/rutaOfertas.js';
 
 
 
@@ -23,6 +21,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(router)
+app.use(routerV2)
 app.use(routerPrueba)
 app.use(routerPlan)
 app.use(routerAlerts)
