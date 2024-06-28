@@ -20,7 +20,7 @@ export const obtenerTodasLasOfertas = async () => {
 }
 
 
-export const obtenerOfertaPorId = async (id) => {
+export const obtenerOfertaPorIdV2 = async (id) => {
     try {
         const oferta = await OfertaV2.findByPk(id, {
             include: [
@@ -54,6 +54,8 @@ export const obtenerOfertaPorTipo = async (tipo) =>{
         throw error;
     }
 }
+
+
 
 
 export const createTable =()=>{

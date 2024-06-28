@@ -1,5 +1,4 @@
-import { obtenerOfertaPorTipo, obtenerTodasLasOfertas } from "../DAO/OfertaDAO.js";
-
+import { obtenerOfertaPorIdV2, obtenerOfertaPorTipo, obtenerTodasLasOfertas } from "../DAO/OfertaDAO.js";
 
 
 export const obtenerOfertas = async (req, res) =>{
@@ -36,4 +35,12 @@ export const obtenerOfertas = async (req, res) =>{
     console.log("Ofertas obtenidas"+tipo+ofertas.length)
     res.send(ofertas)
 
+}
+
+
+export const obtenerOfertaPorId = async (req, res)=>{
+    const {id} = req.body;
+    console.log("Obteniendo ofertas con id: "+id)
+    const oferta = await obtenerOfertaPorIdV2(id)
+    res.send(oferta)
 }
