@@ -1,3 +1,4 @@
+import { obtenerAlojamientoPorIdV2 } from "../DAO/AlojamientoV2.js";
 import { obtenerOfertaPorIdV2, obtenerOfertaPorTipo, obtenerTodasLasOfertas } from "../DAO/OfertaDAO.js";
 
 
@@ -42,5 +43,13 @@ export const obtenerOfertaPorId = async (req, res)=>{
     const {id} = req.body;
     console.log("Obteniendo ofertas con id: "+id)
     const oferta = await obtenerOfertaPorIdV2(id)
+    res.send(oferta)
+}
+
+
+export const obtenerAlojamiento = async (req, res)=>{
+    const {id} = req.body;
+    console.log("Obteniendo alojamiento con id: "+id)
+    const oferta = await obtenerAlojamientoPorIdV2(id)
     res.send(oferta)
 }

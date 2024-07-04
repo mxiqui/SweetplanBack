@@ -124,6 +124,47 @@ export const adaptadorVuelo = (itinerarios) => {
     return vuelos; // Retorna el array vuelos
 }
 
+export const adaptadorVueloAuto = (itinerarios) => {
+    var vuelos = [];
+
+    itinerarios.forEach(itinerario => {
+        if (itinerario != null && itinerario != undefined) {
+            if (Array.isArray(itinerario.tags) && itinerario.tags.length > 0 && itinerario.tags[0] === 'cheapest') {
+                var vueloIda = new VueloEntity(
+                    itinerario.legs[0].carriers.marketing[0].name,
+                    itinerario.legs[0].origin.name,
+                    itinerario.legs[0].destination.name,
+                    itinerario.legs[0].origin.id,
+                    itinerario.legs[0].destination.id,
+                    itinerario.price.raw,
+                    itinerario.legs[0].departure,
+                    itinerario.legs[0].arrival,
+                    itinerario.legs[0].durationInMinutes,
+                    itinerario.legs[0].carriers.marketing[0].logoUrl,
+                );
+    
+                var vueloVuelta = new VueloEntity(
+                    itinerario.legs[1].carriers.marketing[0].name,
+                    itinerario.legs[1].origin.name,
+                    itinerario.legs[1].destination.name,
+                    itinerario.legs[1].origin.id,
+                    itinerario.legs[1].destination.id,
+                    itinerario.price.raw,
+                    itinerario.legs[1].departure,
+                    itinerario.legs[1].arrival,
+                    itinerario.legs[1].durationInMinutes,
+                    itinerario.legs[1].carriers.marketing[0].logoUrl,
+                );
+    
+                vuelos.push(vueloIda);
+                vuelos.push(vueloVuelta);
+            }
+        }
+    });
+
+    return vuelos; // Retorna el array vuelos
+}
+
 
 
 export const adaptadorAlojamiento=async(alojamientos)=>{

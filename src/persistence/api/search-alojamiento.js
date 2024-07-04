@@ -43,6 +43,36 @@ export const searchAlojamientoAirbnb=async(destino, entrada, salida, personas, c
 
 }
 
+
+export const searchAlojamientoAirbnbAuto=async(destino, entrada, salida, personas, children, divisa)=>{
+    console.log(destino)
+
+    const url = `https://airbnb13.p.rapidapi.com/search-location?location=${destino}&checkin=${entrada}&checkout=${salida}&adults=${personas}&children=${children}&infants=0&pets=0&page=1&currency=${divisa}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': process.env.API_AIRBNB,
+            'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com'
+        }
+    };
+
+    try {
+        var alojamientos=[];
+        const response = await fetch(url, options);
+        const result = await response.json();
+        if(result!=null){
+            const alojamientosFiltrados = result.results.filter(res => res.type === "Entire rental unit")
+            return alojamientosFiltrados[0];
+        }else{
+            return 'No hay airbnbs disponibles';
+        }
+    } catch (error) {
+        console.error(error);
+        return 'No hay airbnbs disponibles';
+    }
+
+}
+
 export const searchAlojamientoBooking=async(divisa, entrada, destino, personas, salida)=>{
 
     // const url = `https://booking-com.p.rapidapi.com/v2/hotels/search?locale=es&filter_by_currency=${divisa}&checkin_date=${entrada}&dest_type=city&dest_id=${destino}&adults_number=${personas}&checkout_date=${salida}&order_by=popularity&room_number=1&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&include_adjacency=true&page_number=0`;

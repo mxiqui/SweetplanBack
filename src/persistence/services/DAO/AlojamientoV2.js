@@ -25,3 +25,15 @@ export const saveAlojamientoV2 = async (nombre, estrellas, puntuacion, direccion
     return alojamiento;
           
 }
+
+
+export const obtenerAlojamientoPorIdV2 = async (id) => {
+    try {
+        const alojamiento = await AlojamientoV2.findByPk(id);
+        console.log(alojamiento)
+        return alojamiento;
+    } catch (error) {
+        console.error('Error al obtener la alojamiento por ID:', error);
+        return null;
+    }
+}
