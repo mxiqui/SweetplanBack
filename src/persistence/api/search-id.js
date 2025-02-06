@@ -1,102 +1,80 @@
-import fetch  from 'node-fetch';
+import fetch from 'node-fetch';
 
-export const searchId=async (city)=>{
+const KEYS = [process.env.API_1, process.env.API_2, process.env.API_3, process.env.API_4];
 
-    // const url = `https://skyscanner80.p.rapidapi.com/api/v1/flights/auto-complete?query=${city}&market=ES&locale=es-ES`;
-    //     const options = {
-    //         method: 'GET',
-    //         headers: {
-    //             'X-RapidAPI-Key': process.env.API_SKYSCANNER,
-    //             'X-RapidAPI-Host': 'skyscanner80.p.rapidapi.com'
-    //         }
-    //     };
-
-    //     try {
-    //         const response = await fetch(url, options);
-    //         const result = await response.json();
-
-    //         if(result.data[0].id==undefined){
-    //             return null;
-    //         }else{
-    //             console.log("************ Id obtenido: "+city+" -->"+result.data[0].id+" ************")
-    //             return result.data[0].id
-    //         }
-            
-    //     } catch (error) {
-    //         console.log("************ ERROR "+error+" ************")
-    //         return null;
-    //     }
-
+export const searchId = async (city) => {
     const url = `https://sky-scanner3.p.rapidapi.com/flights/auto-complete?query=${city}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': "3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97",
-                'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com'
-            }
-            };
-
-        try {
-
-            const response = await fetch(url, options);
-            const result = await response.json();
-            if(result.data.lenght>0 &&result.data[0].presentation.skyId==undefined){
-                return null;
-            }else{
-                console.log("************ Id obtenido: "+city+" -->"+result.data[0].presentation.skyId+" ************")
-                return result.data[0].presentation.skyId;
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-//     const url = `https://skyscanner80.p.rapidapi.com/api/v1/flights/auto-complete?query=${city}&market=es&locale=es-ES`;
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'x-rapidapi-key': '3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97',
-// 		'x-rapidapi-host': 'skyscanner80.p.rapidapi.com'
-// 	}
-// };
-
-// try {
-// 	const response = await fetch(url, options);
-//             const result = await response.json();
-//             if(result.data[0].id==undefined){
-//                 return null;
-//             }else{
-//                 console.log("************ Id obtenido: "+city+" -->"+result.data[0].id+" ************")
-//                 return result.data[0].id;
-//             }
-// } catch (error) {
-// 	console.error(error);
-// }
     
-}
-
-
-export const searchIdBooking=async(city)=>{
-    const url = `https://booking-com.p.rapidapi.com/v1/hotels/locations?name=${city}&locale=es`;
-    const options = {
+    const getOptions = (apiKey) => ({
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': process.env.API_BOOKING,
+            'X-RapidAPI-Key': apiKey,
+            'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com'
+        }
+    });
+
+    for (let i = 0; i < KEYS.length; i++) {
+        console.log(process.env.API_1)
+        try {
+            const response = await fetch(url, getOptions(KEYS[i]));
+            const result = await response.json();
+
+            if (result.message && result.message.includes('You have exceeded the MONTHLY quota')) {
+                console.log(`API key ${i + 1} has exceeded the quota, trying next key...`);
+                continue;
+            }
+
+            if (result.data.length > 0 && result.data[0].presentation.skyId !== undefined) {
+                console.log(`************ Id obtenido: ${city} --> ${result.data[0].presentation.skyId} ************`);
+                return result.data[0].presentation.skyId;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error(`Error with API key ${i + 1}:`, error);
+        }
+    }
+
+    return null;
+};
+
+
+
+export const searchIdBooking = async (city) => {
+    console.log("hdhdhhdd"+city)
+    const url = `https://booking-com.p.rapidapi.com/v1/hotels/locations?name=${city}&locale=es`;
+    
+    const getOptions = (apiKey) => ({
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': apiKey,
             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
         }
-    };
+    });
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result)
-        console.log("************ Id alojamiento obtenido: "+city+" -->"+result[0].dest_id+" ************")
-        return {
-            id:result[0].dest_id,
-            type:result[0].dest_type
-        };
+    for (let i = 0; i < KEYS.length; i++) {
+        try {
+            const response = await fetch(url, getOptions(KEYS[i]));
+            const result = await response.json();
 
-    } catch (error) {
-        console.log("************ ERROR "+error+" ************")
-        return null
+            if (result.message && result.message.includes('You have exceeded the MONTHLY quota')) {
+                console.log(`API key ${i + 1} has exceeded the quota, trying next key...`);
+                continue;
+            }
+
+            if (result.length > 0) {
+                console.log(`************ Id alojamiento obtenido: ${city} --> ${result[0].dest_id} ************`);
+                return {
+                    id: result[0].dest_id,
+                    type: result[0].dest_type
+                };
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error(`Error with API key ${i + 1}:`, error);
+        }
     }
-}
+
+    return null;
+};

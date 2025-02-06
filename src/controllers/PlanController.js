@@ -1,4 +1,5 @@
-import { searchAlojamientoBooking, searchAlojamientoAirbnb, searchImageBooking, searchAlojamientoAirbnbAuto } from "../persistence/api/search-alojamiento.js";
+import axios from 'axios';
+import { searchAlojamientoBooking, searchAlojamientoAirbnb, searchImageBooking, searchAlojamientoAirbnbAuto, searchAlojamientoBookingAuto } from "../persistence/api/search-alojamiento.js";
 import { searchFly, searchFlyAuto } from "../persistence/api/search-fly.js";
 import { searchId, searchIdBooking } from "../persistence/api/search-id.js";
 import { saveAlojamientoV2 } from "../persistence/services/DAO/AlojamientoV2.js";
@@ -27,11 +28,11 @@ export const findPlan= async(req, res)=>{
 
     console.log("************ Consultando los Alojamientos Airbnb: "+`{${origen}, ${destino}, ${fecha_ida}, ${fecha_vuelta}, ${personas}} ************`)
     var resultadoAlojamientosAir=await searchAlojamientoAirbnb(destino, ida_formateada,vuelta_formateada, personas, 0, 'EUR' )
-    console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosAir)
+    // console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosAir)
 
     console.log("************ Consultando los Alojamientos Booking: "+`{${origen}, ${destino}, ${fecha_ida}, ${fecha_vuelta}, ${personas}} ************`)
     var resultadoAlojamientosBook= await searchAlojamientoBooking('EUR', ida_formateada, cityIdBooking, personas, vuelta_formateada)
-    console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosBook)
+    // console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosBook)
 
     const finalRes={
         vuelos: resultadoVuelos,
@@ -64,7 +65,7 @@ export const getImages = async(req, res)=>{
 
 export const buscarOfertasAutomaticoAirbnb= async(req, res)=>{
     console.log("****************** Acceso ruta findPlan ******************")
-    const { origen, personas, destino, fecha_ida, fecha_vuelta, tipo,  company, imagen, galeria, descripcion, urlVuelos} = req.body;
+    const { origen, personas, destino, fecha_ida, fecha_vuelta, tipo,  company, imagen, galeria, descripcion, urlVuelos, regimen} = req.body;
     // const origen="Madrid", personas="2", destino="Ibiza", fecha_ida="2024-07-17", fecha_vuelta="2024-07-24"
     // console.log(origen, personas, destino, fecha_ida, fecha_vuelta)
     
@@ -72,7 +73,6 @@ export const buscarOfertasAutomaticoAirbnb= async(req, res)=>{
     const vuelta_formateada= adaptadorFecha(fecha_vuelta);
     const originCity= await searchId(origen);
     const destinationCity= await searchId(destino);
-    //const cityIdBooking = await searchIdBooking(destino)
 
 
 
@@ -80,42 +80,67 @@ export const buscarOfertasAutomaticoAirbnb= async(req, res)=>{
     var resultadoVuelos= await searchFlyAuto(originCity, destinationCity, fecha_ida, fecha_vuelta, personas, 'EUR')
     console.log(`************ Vuelos obtenidos ************`+ resultadoVuelos)
     var imagenes = "";
+
     if(resultadoVuelos != 'No hay vuelos disponibles'){
+        if(company == 'airbnb'){
+
+            console.log("************ Consultando los Alojamientos Airbnb: "+`{${origen}, ${destino}, ${fecha_ida}, ${fecha_vuelta}, ${personas}} ************`)
+            var resultadoAlojamientosAir=await searchAlojamientoAirbnbAuto(destino, ida_formateada,vuelta_formateada, personas, 0, 'EUR' )
+            imagenes=resultadoAlojamientosAir.images.join(';');
+            
+            console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosAir)
+            const aloj = await saveAlojamientoV2(resultadoAlojamientosAir.name, 3, resultadoAlojamientosAir.rating*2, resultadoAlojamientosAir.address, parseFloat(resultadoAlojamientosAir.price.rate), resultadoAlojamientosAir.deeplink, ida_formateada, imagenes, company, resultadoAlojamientosAir.id)
+
+            console.log("Total vuelos "+ resultadoVuelos[0].precio)
+            const precioIda=parseFloat(resultadoVuelos[0].precio/parseFloat(personas))/2
+            const precioVuelta= parseFloat(resultadoVuelos[1].precio/parseFloat(personas))/2
+            const precioNoche= parseFloat(resultadoAlojamientosAir.price.rate)
+            console.log(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)
+            console.log("Total noches " +precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1))
+            const toatAlojamiento = precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)
+            console.log("Total formula: " +(resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)))/personas)
+            console.log("TotalNormal "+ (resultadoVuelos[0].precio + toatAlojamiento) / personas)
+            
         
-    }
-
-    //if(company == 'airbnb'){
-
-        console.log("************ Consultando los Alojamientos Airbnb: "+`{${origen}, ${destino}, ${fecha_ida}, ${fecha_vuelta}, ${personas}} ************`)
-        var resultadoAlojamientosAir=await searchAlojamientoAirbnbAuto(destino, ida_formateada,vuelta_formateada, personas, 0, 'EUR' )
-        imagenes=resultadoAlojamientosAir.images.join(';');
         
-        console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosAir)
-        const aloj = await saveAlojamientoV2(resultadoAlojamientosAir.name, 3, resultadoAlojamientosAir.rating*2, resultadoAlojamientosAir.address, parseFloat(resultadoAlojamientosAir.price.rate), resultadoAlojamientosAir.deeplink, ida_formateada, imagenes, company, resultadoAlojamientosAir.id)
+            const vueloIda = await saveVueloV2(resultadoVuelos[0].aerolinea, resultadoVuelos[0].aeropuertoIda, resultadoVuelos[0].aeropuertoVuelta, precioIda, resultadoVuelos[0].horaSalida.split("T")[1], resultadoVuelos[0].horaLlegada.split("T")[1], fecha_ida, urlVuelos, resultadoVuelos[0].urlImagen)
+        
+            const vueloVuelta = await saveVueloV2(resultadoVuelos[1].aerolinea, resultadoVuelos[1].aeropuertoIda, resultadoVuelos[1].aeropuertoVuelta, precioVuelta, resultadoVuelos[1].horaSalida.split("T")[1], resultadoVuelos[1].horaLlegada.split("T")[1], fecha_vuelta, urlVuelos, resultadoVuelos[1].urlImagen)
+        
+            const oferta = await saveOfertaV2(origen, destino, fecha_ida, fecha_vuelta, imagen, `${galeria};${imagenes}`, resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)), tipo, descripcion, personas, (resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)))/personas, calcularNumeroDeNoches(fecha_ida, fecha_vuelta), "Solo Alojamiento", vueloIda.id, vueloVuelta.id, aloj.id)
+    
+    
+        }else{
+            const cityIdBooking = await searchIdBooking(destino)
 
-    // }else{
+            console.log("************ Consultando los Alojamientos Booking: "+`{${origen}, ${destino}, ${fecha_ida}, ${fecha_vuelta}, ${personas}} ************`)
+            var resultadoAlojamientosBook= await searchAlojamientoBookingAuto('EUR', ida_formateada, cityIdBooking, personas, vuelta_formateada, regimen)
+            console.log(`************ Alojamientos obtenidos ************`+ resultadoAlojamientosBook)
 
-    // }
-    console.log("Total vuelos "+ resultadoVuelos[0].precio)
-    const precioIda=parseFloat(resultadoVuelos[0].precio/parseFloat(personas))/2
-    const precioVuelta= parseFloat(resultadoVuelos[1].precio/parseFloat(personas))/2
-    const precioNoche= parseFloat(resultadoAlojamientosAir.price.rate)
-    console.log(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)
-    console.log("Total noches " +precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1))
-    const toatAlojamiento = precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)
-    console.log("Total formula: " +(resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)))/personas)
-    console.log("TotalNormal "+ (resultadoVuelos[0].precio + toatAlojamiento) / personas)
+            const imagenes = await searchImageBooking(resultadoAlojamientosBook.hotel_id);
+
+            const aloj = await saveAlojamientoV2(resultadoAlojamientosBook.hotel_name_trans, 4, resultadoAlojamientosBook.review_score, resultadoAlojamientosBook.address, parseFloat(resultadoAlojamientosBook.composite_price_breakdown.gross_amount_per_night.value), resultadoAlojamientosBook.url, ida_formateada, imagenes, company, resultadoAlojamientosBook.hotel_id)
     
 
-
-    const vueloIda = await saveVueloV2(resultadoVuelos[0].aerolinea, resultadoVuelos[0].aeropuertoIda, resultadoVuelos[0].aeropuertoVuelta, precioIda, resultadoVuelos[0].horaSalida.split("T")[1], resultadoVuelos[0].horaLlegada.split("T")[1], fecha_ida, urlVuelos, resultadoVuelos[0].urlImagen)
-
-    const vueloVuelta = await saveVueloV2(resultadoVuelos[1].aerolinea, resultadoVuelos[1].aeropuertoIda, resultadoVuelos[1].aeropuertoVuelta, precioVuelta, resultadoVuelos[1].horaSalida.split("T")[1], resultadoVuelos[1].horaLlegada.split("T")[1], fecha_vuelta, urlVuelos, resultadoVuelos[1].urlImagen)
-
-    const oferta = await saveOfertaV2(origen, destino, fecha_ida, fecha_vuelta, imagen, `${galeria};${imagenes}`, resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)), tipo, descripcion, personas, (resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)))/personas, calcularNumeroDeNoches(fecha_ida, fecha_vuelta), "Solo Alojamiento", vueloIda.id, vueloVuelta.id, aloj.id)
-
-    console.log("Oferta guardada con exito")
-    res.send({vuelo: resultadoVuelos, oferta: oferta, alojamiento: aloj})
+            const precioIda=parseFloat(resultadoVuelos[0].precio/parseFloat(personas))/2
+            const precioVuelta= parseFloat(resultadoVuelos[1].precio/parseFloat(personas))/2
+            const precioNoche= parseFloat(resultadoAlojamientosBook.composite_price_breakdown.gross_amount_per_night.value)
+            const toatAlojamiento = precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)
+            
+        
+        
+            const vueloIda = await saveVueloV2(resultadoVuelos[0].aerolinea, resultadoVuelos[0].aeropuertoIda, resultadoVuelos[0].aeropuertoVuelta, precioIda, resultadoVuelos[0].horaSalida.split("T")[1], resultadoVuelos[0].horaLlegada.split("T")[1], fecha_ida, urlVuelos, resultadoVuelos[0].urlImagen)
+        
+            const vueloVuelta = await saveVueloV2(resultadoVuelos[1].aerolinea, resultadoVuelos[1].aeropuertoIda, resultadoVuelos[1].aeropuertoVuelta, precioVuelta, resultadoVuelos[1].horaSalida.split("T")[1], resultadoVuelos[1].horaLlegada.split("T")[1], fecha_vuelta, urlVuelos, resultadoVuelos[1].urlImagen)
+        
+            const oferta = await saveOfertaV2(origen, destino, fecha_ida, fecha_vuelta, imagen, `${galeria};${imagenes}`, resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)), tipo, descripcion, personas, (resultadoVuelos[0].precio+(precioNoche*(calcularNumeroDeNoches(fecha_ida, fecha_vuelta)+1)))/personas, calcularNumeroDeNoches(fecha_ida, fecha_vuelta), "Solo Alojamiento", vueloIda.id, vueloVuelta.id, aloj.id)
+    
+        }
+    
+        console.log("Oferta guardada con exito")
+    }
+    
+    res.send({vuelo: resultadoVuelos})
 }
 
 
@@ -152,4 +177,66 @@ export const extractDomain = (url) => {
     const domain = parts.length > 2 ? parts.slice(-2, -1)[0] : parts[0];
   
     return domain;
-  };
+};
+
+
+
+const getCalendario = async (req, res) =>{
+    const {origen,destino} = req.body;
+
+    const day = getCurrentDate();
+    const day6 = getDateSixMonthsFromNow();
+
+    const options = {
+        method: 'GET',
+        url: 'https://sky-scanner3.p.rapidapi.com/flights/price-calendar-return',
+        params: {
+          fromEntityId: origen,
+          departDate: day,
+          returnDate: day6,
+          toEntityId: destino
+        },
+        headers: {
+          'x-rapidapi-key': '3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97',
+          'x-rapidapi-host': 'sky-scanner3.p.rapidapi.com'
+        }
+      };
+      
+      try {
+          const response = await axios.request(options);
+          console.log(response.data);
+      } catch (error) {
+          console.error(error);
+      }
+}
+
+
+const getCurrentDate = () => {
+    const date = new Date();
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses son indexados desde 0
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+};
+
+
+const getDateSixMonthsFromNow = () => {
+    const date = new Date();
+    
+    // Sumamos 6 meses al mes actual
+    date.setMonth(date.getMonth() + 6);
+
+    // Ajustamos el año en caso de desbordamiento de meses
+    if (date.getMonth() < 0) {
+        date.setFullYear(date.getFullYear() + 1);
+        date.setMonth(date.getMonth() + 12);
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses son indexados desde 0
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+};

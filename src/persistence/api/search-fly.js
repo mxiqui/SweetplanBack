@@ -1,99 +1,86 @@
 import { adaptadorVuelo, adaptadorVueloAuto } from '../../utils/adatptadorFecha.js';
 import fetch from 'node-fetch';
+const KEYS = [process.env.API_1, process.env.API_2, process.env.API_3, process.env.API_4];
+
+
 
 export const searchFly = async (idCityIda, idCityVuelta, fechaIda, fechaVuelta, personas, divisa) => {
     console.log(idCityIda)
-    const url = `https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip?fromEntityId=${idCityIda}&toEntityId=${idCityVuelta}&departDate=${fechaIda}&returnDate=${fechaVuelta}&currency=EUR&stops=direct%2C1stop%2C2stops&adults=${personas}&cabinClass=economy`;
+    const url = `https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip?fromEntityId=${idCityIda}&toEntityId=${idCityVuelta}&departDate=${fechaIda}&returnDate=${fechaVuelta}&currency=${divisa}&stops=direct%2C1stop%2C2stops&adults=${personas}&cabinClass=economy`;
 
-    const options = {
+    const options = (apiKey) => ({
         method: 'GET',
         headers: {
-            'x-rapidapi-key': "5b48c0e4c9msh45b3f42c919b5fap124ca3jsn5c5593cadb0a",
+            'x-rapidapi-key': apiKey,
             'x-rapidapi-host': 'sky-scanner3.p.rapidapi.com'
         }
-    };
+    });
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result)
+    for (let i = 0; i < KEYS.length; i++) {
+        try {
+            const response = await fetch(url, options(KEYS[i]));
+            const result = await response.json();
 
-        if (result != null && result.data && result.data.itineraries) {
-            // Ordenar itinerarios por precio
-            result.data.itineraries.sort((a, b) => a.price.raw - b.price.raw);
-            let res = adaptadorVuelo(result.data.itineraries);
-            return res;
-        } else {
+            if (result.message === 'You have exceeded the MONTHLY quota for Requests on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/ntd119/api/sky-scanner3') {
+                console.log(`API key ${i + 1} has exceeded the quota, trying next key...`);
+                continue;
+            } else {
+                if (result != null && result.data && result.data.itineraries) {
+                    result.data.itineraries.sort((a, b) => a.price.raw - b.price.raw);
+                    let res = adaptadorVuelo(result.data.itineraries);
+                    return res;
+                } else {
+                    return 'No hay vuelos disponibles';
+                }
+            }
+        } catch (error) {
+            console.error(error);
             return 'No hay vuelos disponibles';
         }
-        return result
-    } catch (error) {
-        console.error(error);
-        return 'No hay vuelos disponibles';
     }
+
+    return 'No hay vuelos disponibles después de probar todas las claves de API';
 };
+
+
 
 
 export const searchFlyAuto = async (idCityIda, idCityVuelta, fechaIda, fechaVuelta, personas, divisa) => {
     console.log(idCityIda)
-    const url = `https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip?fromEntityId=${idCityIda}&toEntityId=${idCityVuelta}&departDate=${fechaIda}&returnDate=${fechaVuelta}&currency=EUR&stops=direct%2C1stop%2C2stops&adults=${personas}&cabinClass=economy`;
+    const url = `https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip?fromEntityId=${idCityIda}&toEntityId=${idCityVuelta}&departDate=${fechaIda}&returnDate=${fechaVuelta}&currency=${divisa}&stops=direct%2C1stop%2C2stops&adults=${personas}&cabinClass=economy`;
 
-    const options = {
+    const options = (apiKey) => ({
         method: 'GET',
         headers: {
-            'x-rapidapi-key': "3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97",
+            'x-rapidapi-key': apiKey,
             'x-rapidapi-host': 'sky-scanner3.p.rapidapi.com'
         }
-    };
+    });
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result)
+    for (let i = 0; i < KEYS.length; i++) {
+        try {
+            const response = await fetch(url, options(KEYS[i]));
+            const result = await response.json();
+            console.log(result)
 
-        if (result != null && result.data && result.data.itineraries) {
-            // Ordenar itinerarios por precio
-            result.data.itineraries.sort((a, b) => a.price.raw - b.price.raw);
-            let res = adaptadorVueloAuto(result.data.itineraries);
-            return res;
-        } else {
+            if (result.message === 'You have exceeded the MONTHLY quota for Requests on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/ntd119/api/sky-scanner3') {
+                console.log(`API key ${i + 1} has exceeded the quota, trying next key...`);
+                continue;
+            } else {
+                if (result != null && result.data && result.data.itineraries) {
+                    result.data.itineraries.sort((a, b) => a.price.raw - b.price.raw);
+                    let res = adaptadorVueloAuto(result.data.itineraries);
+                    return res;
+                } else {
+                    return 'No hay vuelos disponibles';
+                }
+            }
+        } catch (error) {
+            console.error(error);
             return 'No hay vuelos disponibles';
         }
-    } catch (error) {
-        console.error(error);
-        return 'No hay vuelos disponibles';
     }
+
+    return 'No hay vuelos disponibles después de probar todas las claves de API';
 };
 
-// export const searchFly = async (idCityIda, idCityVuelta, fechaIda, fechaVuelta, personas, divisa) => {
-//     console.log(idCityIda)
-    
-    
-//     const url = `https://skyscanner80.p.rapidapi.com/api/v1/flights/search-roundtrip?fromId=${idCityIda}&toId=${idCityVuelta}&departDate=${fechaIda}&returnDate=${fechaVuelta}&adults=${personas}&cabinClass=economy&currency=EUR&market=US&locale=es-Es`;
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'x-rapidapi-key': '3ac2c335b5mshc10c5f73da443d7p1c16a7jsn52b656f3ea97',
-// 		'x-rapidapi-host': 'skyscanner80.p.rapidapi.com'
-// 	}
-// };
-
-//     try {
-//         const response = await fetch(url, options);
-//         const result = await response.json();
-//         console.log(result)
-
-//         if (result != null && result.data && result.data.itineraries) {
-//             // Ordenar itinerarios por precio
-//             result.data.itineraries.sort((a, b) => a.price.raw - b.price.raw);
-//             let res = adaptadorVuelo(result.data.itineraries);
-//             return res;
-//         } else {
-//             return 'No hay vuelos disponibles';
-//         }
-//         return result
-//     } catch (error) {
-//         console.error(error);
-//         return 'No hay vuelos disponibles';
-//     }
-// };
